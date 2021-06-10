@@ -3,11 +3,28 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 const Navbar = styled.nav`
+    ${'' /* background-color: lightblue; */}
     padding: 35px 20px;
+
+    @media only screen and (min-width: 720px) {
+        ${'' /* padding:  */}
+        ${'' /* display: flex; */}
+        ${'' /* justify-content: space-between; */}
+    }
 `
 
 const Logo = styled.span`
     float: left;
+
+    @media only screen and (min-width: 720px) {
+        ${'' /* background-color: red; */}
+        ${'' /* display: flex; */}
+        ${'' /* align-items: center; */}
+        margin-right: 2.5vw;
+        margin-top: 7px;
+        ${'' /* float: none; */}
+        ${'' /* float: ''; */}
+    }
 `
 
 const Bar = styled.span`
@@ -16,46 +33,103 @@ const Bar = styled.span`
     img {
         filter: invert(81%) sepia(0%) saturate(5716%) hue-rotate(112deg) brightness(95%) contrast(89%);
     }
+
+    @media only screen and (min-width: 720px) {
+        display: none;
+    }
 `
 
 const Collapse = styled.div`
     background: #3b3054;
     margin-top: 55px;
     border-radius: 10px;
-    display: ${porps => porps.isOpen ? 'flex' : 'none'};
+    display: ${props => props.isOpen ? 'flex' : 'none'};
     flex-direction: column;
+    ${'' /* align-items: center; */}
 
-    @media only screen and (min-width: 500px) {
+    @media only screen and (min-width: 720px) {
+        ${'' /* background-color: pink; */}
+        background: transparent;
+        ${'' /* padding: 5px; */}
+        border-radius: 0;
         display: flex;
+        flex-direction: row;
         justify-content: space-between;
+        margin: 0;
     }
 `
 const Nav = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 0.5rem;
 
     div {
         margin-top: 2rem;
     }
+
+    @media only screen and (min-width: 720px) {
+        ${'' /* background-color: yellow; */}
+        ${'' /* padding: 5px; */}
+        ${'' /* margin-top: 2rem; */}
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        ${'' /* width: 50vw; */}
+        width: 300px;
+        margin: 0;
+        ${'' /* justify-content: space-between; */}
+
+        div {
+            margin: 0;
+        }
+    }    
 `
 const Navbtn = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 0.5rem;
 
     div {
         margin-bottom: 2rem;
     }
+
+    @media only screen and (min-width: 720px) {
+        ${'' /* background-color: green; */}
+        ${'' /* padding: 5px; */}
+        width: 200px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        ${'' /* display: inline-block; */}
+        margin: 0;
+        ${'' /* justify-content: space-between; */}
+
+        div {
+            margin: 0;
+        }
+    }  
+    
 `
 
 const NavItem = styled.div`
+    ${'' /* margin-bottom: 2rem; */}
+
     a {
         color: #fff;
         text-decoration: none;
-        font-family: 'Poppins';
         font-weight: 700;
     }
+
+    @media only screen and (min-width: 720px) {
+        ${'' /* background-color: orange; */}
+        margin: 0;
+
+        a {
+            color: #bfbfbf;
+        }
+    }  
 `
 
 const Hrline = styled.hr`
@@ -65,6 +139,10 @@ const Hrline = styled.hr`
     background-color: #bfbfbf;
     border-color: #bfbfbf;
     opacity: 0.2;
+
+    @media only screen and (min-width: 720px) {
+        display: none;
+    }  
 `
 
 const Button = styled.button`
@@ -74,10 +152,15 @@ const Button = styled.button`
     font-size: 18px;
     border-radius: 50px;
     border: none;
-    background: ${porps => porps.login ? 'transparent' : '#2acfcf'};
-    padding: ${props => props.login ? '' : '10px 100px'};
+    background: ${props => props.login ? 'transparent' : '#2acfcf'};
+    padding: ${props => props.login ? '' : '10px 25vw'};
     
-    
+    @media only screen and (min-width: 720px) {
+        color: ${props => props.login ? '#bfbfbf' : '#fff'};
+        background: ${props => props.login ? 'transparent' : '#2acfcf'};
+        padding: ${props => props.login ? '0' : '8px 25px'};
+        ${'' /* padding: 0; */}
+    }  
 `
 
 
@@ -146,7 +229,7 @@ class Header extends Component {
         super(props);
 
         this.state = {
-            isNavOpen: true,
+            isNavOpen: false,
         };
 
         this.toggleNav = this.toggleNav.bind(this);
