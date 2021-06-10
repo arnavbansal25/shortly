@@ -2,9 +2,17 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-const Logo = styled.span`
+const Topnav = styled.nav`
+    ${'' /* background-color: yellow; */}
+    ${'' /* padding: 0.1px; */}
+    padding: 35px 20px;
+`
+
+const Logo = styled.h1`
+    display: inline-block;
     float: left;
     curosr: pointer;
+    margin-top: -5px;
 
     @media only screen and (min-width: 720px) {
         ${'' /* background-color: red; */}
@@ -30,6 +38,7 @@ const Bar = styled.span`
 `
 
 const Collapse = styled.div`
+    width: 100%;
     background: #3b3054;
     margin-top: 55px;
     border-radius: 10px;
@@ -41,6 +50,7 @@ const Collapse = styled.div`
         ${'' /* background-color: pink; */}
         background: transparent;
         ${'' /* padding: 5px; */}
+        width: auto;
         border-radius: 0;
         display: flex;
         flex-direction: row;
@@ -234,9 +244,9 @@ class Navbar extends Component {
 
     render() {
         return (
-            <React.Fragment>
+            <Topnav>
                 <Logo>
-                    <img src="../assets/images/logo.svg" alt="twitter-icon" />
+                    <img src="../assets/images/logo.svg" alt="shortly-logo" />
                 </Logo>
                 <Bar onClick={this.toggleNav} >
                     <img src="../assets/images/menubar.svg" alt="menu-bar" />
@@ -274,7 +284,7 @@ class Navbar extends Component {
                         </NavItem>
                     </Navbtn>
                 </Collapse>
-            </React.Fragment>
+            </Topnav>
         );
     }
 }

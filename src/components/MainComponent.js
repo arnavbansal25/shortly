@@ -7,7 +7,7 @@ import { createGlobalStyle } from 'styled-components'
 const MainWrapper = styled.section`
     max-width: 1250px;
     margin: 0 auto;
-    padding: 35px 20px;
+    ${'' /* padding: 35px 20px; */}
     font-size: 18px;
     font-family: 'Poppins';
 `
@@ -48,7 +48,7 @@ class Main extends Component {
                 <hr />11
                 <img src="./assets/images/icon-twitter.svg" width="100px" style={{backgroundColor: "blue"}} />
                 <hr />12
-                <img src="./assets/images/illustration-working.svg" width="100px" />
+                <img src="./assets/images/illustration-working.svg" width="100%" />
                 <hr />13
                 <img src="./assets/images/logo.svg" width="100px" />
                 <hr />14
