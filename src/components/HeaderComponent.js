@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import '../index.css';
 
 const Navbar = styled.nav`
-    ${'' /* background-color: lightblue; */}
-    padding: 30px 15px;
+    padding: 35px 20px;
 `
 
 const Logo = styled.span`
@@ -14,55 +12,72 @@ const Logo = styled.span`
 
 const Bar = styled.span`
     float: right;
+
+    img {
+        filter: invert(81%) sepia(0%) saturate(5716%) hue-rotate(112deg) brightness(95%) contrast(89%);
+    }
 `
 
 const Collapse = styled.div`
     background: #3b3054;
-    margin-top: 50px;
+    margin-top: 55px;
     border-radius: 10px;
-    display: ${porps => porps.isOpen ? 'block' : 'none'};
-    justify-content: center;
-    align-items: center;
-    
+    display: ${porps => porps.isOpen ? 'flex' : 'none'};
+    flex-direction: column;
 
     @media only screen and (min-width: 500px) {
         display: flex;
         justify-content: space-between;
     }
 `
-const Navlinks = styled.div`
-    ${'' /* background: pink; */}
-    ${'' /* padding: 5px; */}
-    ${'' /* display: flex; */}
-    ${'' /* justify-content: space-between; */}
+const Nav = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    div {
+        margin-top: 2rem;
+    }
 `
 const Navbtn = styled.div`
-    ${'' /* background: lightblue; */}
-    ${'' /* padding: 5px; */}
-    ${'' /* display: flex; */}
-    ${'' /* justify-content: space-between; */}
-`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-const NavItem = styled.span`
-    ${'' /* margin-right: 2.5vw; */}
-    display: block;
-    ${'' /* background: green; */}
-    a {
-        color: #fff;
-        text-decoration: none;
-        font-family: 'Poppins', serif;
+    div {
+        margin-bottom: 2rem;
     }
 `
 
-const Button = styled.button`
-    ${'' /* padding: 5px; */}
-    ${'' /* border-radius: 20px; */}
-    ${'' /* border: none; */}
+const NavItem = styled.div`
+    a {
+        color: #fff;
+        text-decoration: none;
+        font-family: 'Poppins';
+        font-weight: 700;
+    }
 `
-const SignUp = styled.button`
-    background-color: #2acfcf;
-    border-radius: 20px;
-    ${'' /* border: none; */}
+
+const Hrline = styled.hr`
+    width: 80%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background-color: #bfbfbf;
+    border-color: #bfbfbf;
+    opacity: 0.2;
+`
+
+const Button = styled.button`
+    color: #fff;
+    font-family: 'Poppins';
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 50px;
+    border: none;
+    background: ${porps => porps.login ? 'transparent' : '#2acfcf'};
+    padding: ${props => props.login ? '' : '10px 100px'};
+    
+    
 `
 
 
@@ -149,12 +164,12 @@ class Header extends Component {
                 <Logo>
                     <img src="../assets/images/logo.svg" alt="twitter-icon" />
                 </Logo>
-                <Bar onClick={this.toggleNav}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z" /></svg>
+                <Bar onClick={this.toggleNav} >
+                    <img src="../assets/images/menubar.svg" alt="menu-bar" />
                 </Bar>
 
                 <Collapse isOpen={this.state.isNavOpen}>
-                    <Navlinks>
+                    <Nav>
                         <NavItem>
                             <NavLink to=''>
                                 Features
@@ -170,17 +185,18 @@ class Header extends Component {
                                 Resources
                             </NavLink>
                         </NavItem>
-                    </Navlinks>
+                    </Nav>
+                    <Hrline />
                     <Navbtn>
                         <NavItem>
-                            <Button outline>
+                            <Button login>
                                 Login
                             </Button>
                         </NavItem>
                         <NavItem>
-                            <SignUp>
+                            <Button signup>
                                 Sign Up
-                            </SignUp>
+                            </Button>
                         </NavItem>
                     </Navbtn>
                 </Collapse>
