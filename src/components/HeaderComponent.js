@@ -39,7 +39,7 @@ const Introduction = styled.div`
     padding: 0 20px;
     margin-top: 35px;
 
-    @media only screen and (min-width: 720px) {
+    @media only screen and (min-width: 730px) {
         margin-top: 0;
         order: 1;
         width: 50%;
@@ -60,7 +60,7 @@ const Headertext = styled.h2`
     text-shadow: 0px 1px, 1px 0px, 1px 1px;
     line-height: 130%;
 
-    @media only screen and (min-width: 720px) {
+    @media only screen and (min-width: 730px) {
         text-align: left;
         font-size: 4rem;
     }
@@ -77,7 +77,7 @@ const Description = styled.p`
     font-weight: 500;
     margin-top: 5px;
 
-    @media only screen and (min-width: 720px) {
+    @media only screen and (min-width: 730px) {
         text-align: left;
         font-size: 20px;
     }
@@ -90,18 +90,18 @@ const Start = styled.button`
 
     font-family: 'Poppins';
     font-weight: 700;
-    font-size: 20px;
+    font-size: 18px;
     border-radius: 50px;
     border: none;
     
-    width: 50%;
+    width: 100%;
     max-width: 200px;
 
     padding: 15px;
     margin: 0 auto;
     margin-top: 30px;
 
-    @media only screen and (min-width: 720px) {
+    @media only screen and (min-width: 730px) {
         margin-left: 0;        
     }
 `
