@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 const Topnav = styled.nav`
-    ${'' /* background-color: yellow; */}
-    ${'' /* padding: 0.1px; */}
     padding: 35px 20px;
 `
 
@@ -15,13 +13,8 @@ const Logo = styled.h1`
     margin-top: -5px;
 
     @media only screen and (min-width: 720px) {
-        ${'' /* background-color: red; */}
-        ${'' /* display: flex; */}
-        ${'' /* align-items: center; */}
         margin-right: 2.5vw;
         margin-top: 7px;
-        ${'' /* float: none; */}
-        ${'' /* float: ''; */}
     }
 `
 
@@ -44,12 +37,9 @@ const Collapse = styled.div`
     border-radius: 10px;
     display: ${props => props.isOpen ? 'flex' : 'none'};
     flex-direction: column;
-    ${'' /* align-items: center; */}
 
     @media only screen and (min-width: 720px) {
-        ${'' /* background-color: pink; */}
         background: transparent;
-        ${'' /* padding: 5px; */}
         width: auto;
         border-radius: 0;
         display: flex;
@@ -69,16 +59,11 @@ const Nav = styled.div`
     }
 
     @media only screen and (min-width: 720px) {
-        ${'' /* background-color: yellow; */}
-        ${'' /* padding: 5px; */}
-        ${'' /* margin-top: 2rem; */}
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        ${'' /* width: 50vw; */}
         width: 300px;
         margin: 0;
-        ${'' /* justify-content: space-between; */}
 
         div {
             margin: 0;
@@ -96,15 +81,11 @@ const Navbtn = styled.div`
     }
 
     @media only screen and (min-width: 720px) {
-        ${'' /* background-color: green; */}
-        ${'' /* padding: 5px; */}
         width: 200px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        ${'' /* display: inline-block; */}
         margin: 0;
-        ${'' /* justify-content: space-between; */}
 
         div {
             margin: 0;
@@ -114,8 +95,6 @@ const Navbtn = styled.div`
 `
 
 const NavItem = styled.div`
-    ${'' /* margin-bottom: 2rem; */}
-
     a {
         color: #fff;
         text-decoration: none;
@@ -123,7 +102,6 @@ const NavItem = styled.div`
     }
 
     @media only screen and (min-width: 720px) {
-        ${'' /* background-color: orange; */}
         margin: 0;
 
         a {
@@ -160,7 +138,6 @@ const Button = styled.button`
         color: ${props => props.login ? '#bfbfbf' : '#fff'};
         background: ${props => props.login ? 'transparent' : '#2acfcf'};
         padding: ${props => props.login ? '0' : '8px 25px'};
-        ${'' /* padding: 0; */}
     }  
 `
 
