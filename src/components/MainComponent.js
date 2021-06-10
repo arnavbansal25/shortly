@@ -4,18 +4,10 @@ import Footer from './FooterComponent';
 import styled from 'styled-components';
 import { createGlobalStyle } from 'styled-components'
 
-const GlobalStyle = createGlobalStyle`
-    body {
-        background-color: red;
-        ${'' /* padding: 1rem 2rem; */}
-    }
-`
-
-
 const MainWrapper = styled.section`
-    width: 100%;
     max-width: 1250px;
     margin: 0 auto;
+    padding: 35px 20px;
     font-size: 18px;
     font-family: 'Poppins';
 `
