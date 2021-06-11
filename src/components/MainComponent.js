@@ -5,7 +5,7 @@ import Footer from './FooterComponent';
 import styled from 'styled-components';
 
 const MainWrapper = styled.section`
-    max-width: 1250px;
+    ${'' /* max-width: 1250px; */}
     margin: 0 auto;
     font-size: 18px;
     font-family: 'Poppins';
@@ -30,8 +30,6 @@ class Main extends Component {
                 <img src="./assets/images/bg-boost-mobile.svg" width="100px" />
                 <hr />2
                 <img src="./assets/images/bg-shorten-desktop.svg" width="100px" />
-                <hr />3
-                <img src="./assets/images/bg-shorten-mobile.svg" width="100px" />
                 <hr />4
                 <img src="./assets/images/favicon-32x32.png" width="100px" />
                 <hr />7

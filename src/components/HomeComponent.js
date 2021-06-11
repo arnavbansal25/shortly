@@ -29,6 +29,15 @@ const Shorten = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    @media only screen and (min-width: 730px) {
+        background-image: url("./assets/images/bg-shorten-desktop.svg");
+        background-position: 100%;
+        background-size: cover;
+        max-width: 1250px;
+        flex-direction: row;
+        align-items: center;
+    }
 `
 
 const Searchbar = styled.div`
@@ -53,6 +62,12 @@ const Searchbar = styled.div`
         
         padding: 10px 15px;
     }    
+
+    @media only screen and (min-width: 730px) {
+        width: 70%;
+        margin: 0;
+        margin-right: 15px;
+    }
 `
 
 const ShortenIt = styled.button`
@@ -71,9 +86,17 @@ const ShortenIt = styled.button`
 
     padding: 10px;
     margin: 0 auto;
+
+    @media only screen and (min-width: 730px) {
+        width: 15%;
+        margin: 0;
+    }
 `
 
 const Advance = styled.div`
+    padding: 0 20px;
+    max-width: 450px;
+    margin: 0 auto;
     margin-top: 60px;
 `
 
@@ -90,12 +113,27 @@ const Ad_detail = styled.p`
 `
 
 const Cards = styled.div`
+    margin: 0 auto;
     margin-top: 60px;
+
+    @media only screen and (min-width: 730px) {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;        
+    }
 `
 
 const Card = styled.div`
     background-color: #fff;
     padding: 20px 30px;
+    max-width: 400px;
+    border-radius: 5px;
+    border: none;
+
+    @media only screen and (min-width: 730px) {
+        max-width: 300px;
+        margin-top: ${props => props.a ? '0' : props.b ? '40px' : '80px'};
+    }
 `
 
 const CardImg = styled.span`
@@ -108,6 +146,11 @@ const CardImg = styled.span`
     border-radius: 50%;
     width: 80px;
     height: 80px;
+
+    @media only screen and (min-width: 730px) {
+        margin: 0;
+        margin-top: -60px;
+    }
 `
 
 const CardTitle = styled.h4`
@@ -120,6 +163,10 @@ const CardBody = styled.p`
     color: #bfbfbf;
     text-align: center;
     font-size: 16px;
+
+    @media only screen and (min-width: 730px) {
+        text-align: left;
+    }
 `
 
 const Vr = styled.div`
@@ -127,6 +174,12 @@ const Vr = styled.div`
     width: 7px;
     height: 85px;
     margin: 0 auto;
+
+    @media only screen and (min-width: 730px) {
+        width: 35px;
+        height: 7px;
+        margin: 140px 0;
+    }
 `
 
 class Home extends Component {
@@ -156,34 +209,34 @@ class Home extends Component {
                 </Advance>
 
                 <Cards>
-                    <Card>
+                    <Card a>
                         <CardImg>
                             <img src="./assets/images/icon-brand-recognition.svg" alt="" />
                         </CardImg>
                         <CardTitle>Brand Recognition</CardTitle>
                         <CardBody>
-                            Boost your brand recognition with each click. Generic links don't mean a thing. Branded links help instil confidence in your content.
-                    </CardBody>
+                            a    Boost your brand recognition with each click. Generic links don't mean a thing. Branded links help instil confidence in your content.
+                        </CardBody>
                     </Card>
                     <Vr />
-                    <Card>
+                    <Card b>
                         <CardImg>
                             <img src="./assets/images/icon-detailed-records.svg" alt="" />
                         </CardImg>
                         <CardTitle>Detailed Records</CardTitle>
                         <CardBody>
                             Gain insights into who is clicking your links. Knowing when and where poeple engage with your content helps inform better decisions.
-                    </CardBody>
+                        </CardBody>
                     </Card>
                     <Vr />
-                    <Card>
+                    <Card c>
                         <CardImg>
                             <img src="./assets/images/icon-fully-customizable.svg" alt="" />
                         </CardImg>
                         <CardTitle>Fully Customizable</CardTitle>
                         <CardBody>
                             Improve brand awareness and content discoverability through customizable links, supercharging audience engagement.
-                    </CardBody>
+                        </CardBody>
                     </Card>
                 </Cards>
             </HomeBody>

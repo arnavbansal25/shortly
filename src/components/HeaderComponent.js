@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Navbar from './NavbarComponent';
 
+const Head = styled.div`
+    max-width: 1250px;
+    margin: 0 auto;
+`
+
 const Headerimg = styled.div`
     background-image: url("./assets/images/illustration-working.svg");
     background-repeat: no-repeat;
@@ -113,7 +118,7 @@ class Header extends Component {
 
     render() {
         return (
-            <React.Fragment>
+            <Head>
                 <Navbar />
 
                 <Headerimg />
@@ -129,7 +134,7 @@ class Header extends Component {
                         Get Started
                     </Start>
                 </Introduction>
-            </React.Fragment>
+            </Head>
         );
     }
 }
