@@ -222,7 +222,7 @@ class Navbar extends Component {
     render() {
         return (
             <Topnav>
-                <Logo>
+                <Logo href="/">
                     <img src="../assets/images/logo.svg" alt="shortly-logo" />
                 </Logo>
                 <Bar onClick={this.toggleNav} >
@@ -267,4 +267,4 @@ class Navbar extends Component {
 }
 
 export default Navbar;
-
+export { Logo };

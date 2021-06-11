@@ -100,7 +100,7 @@ const Advance = styled.div`
     margin-top: 60px;
 `
 
-const Ad_head = styled.h3`
+const Ad_head = styled.h2`
     color: #232127;
     font-weight: 700;
     text-align: center;
