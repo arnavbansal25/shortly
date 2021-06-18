@@ -62,7 +62,8 @@ const Headertext = styled.h2`
     opacity: 0.9;
     font-size: 2.5rem;
     font-weight: 900;
-    text-shadow: 0px 1px, 1px 0px, 1px 1px;
+    letter-spacing: 1px;
+    -webkit-text-stroke: 2px;
     line-height: 130%;
 
     @media only screen and (min-width: 730px) {
@@ -140,4 +141,5 @@ class Header extends Component {
 }
 
 export default Header;
+export { Start } ;
 
