@@ -23,11 +23,6 @@ class Main extends Component {
 
                 <Home />
 
-                <br />1
-                <img src="./assets/images/bg-boost-desktop.svg" width="100px" />
-                <hr />2
-                <img src="./assets/images/favicon-32x32.png" width="100px" />
-                
                 <Footer />
             </MainWrapper>
         );

@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Foot = styled.div`
-
 `
 
 const Boost = styled.div`
@@ -16,6 +15,10 @@ const Boost = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    @media only screen and (min-width: 730px) {
+        background-image: url("./assets/images/bg-boost-desktop.svg");
+    }
 `
 const FootText = styled.h2`
     color: #fff;
@@ -33,6 +36,13 @@ const FooterLinks = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+
+    @media only screen and (min-width: 730px) {
+        flex-direction: row;
+        align-items: flex-start;
+        height: auto;
+        padding: 50px 10px;
+    }
 `
 
 const Logo_i = styled.h1`
@@ -41,12 +51,15 @@ const Logo_i = styled.h1`
     img {
         filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
     }
+
+    @media only screen and (min-width: 730px) {
+        margin-right: 15%;
+    }
 `
 
 const Footnav = styled.div`
     display: flex;
     flex-direction: column;
-    ${'' /* background-color: yellow; */}
     justify-content: center;
     align-items: center;
 
@@ -56,6 +69,10 @@ const Footnav = styled.div`
         margin-bottom: 10px;
         font-size: 16px;
     }
+
+    @media only screen and (min-width: 730px) {
+        align-items: flex-start;
+    }
 `
 
 const Subnav = styled.a`
@@ -64,9 +81,13 @@ const Subnav = styled.a`
 `
 
 const Social = styled.div`
-    display: flex;
     width: 50%;
+    display: flex;
     justify-content: space-between;
+
+    @media only screen and (min-width: 730px) {
+        width: 10%;
+    }
 `
 
 function Footer(porps) {
@@ -116,7 +137,6 @@ function Footer(porps) {
                     <img src="./assets/images/icon-pinterest.svg" alt="" />
                     <img src="./assets/images/icon-instagram.svg" alt="" />
                 </Social>
-
             </FooterLinks>
         </Foot>
     );
