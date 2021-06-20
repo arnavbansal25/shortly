@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import Loader from './LoaderComponent';
+import ShortenedLinks from './ShortenedLinksComponent';
 import styled from 'styled-components';
+import axios from "axios";
 
 const HomeBody = styled.div`
     background: #bfbfbf40;  ${'' /* here, 40 is the opacity level = 0.4 */}   
@@ -185,6 +188,65 @@ const Vr = styled.div`
 class Home extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            userlink: '',
+            arrLinks: [],
+            loader: false,
+            showlink: false            
+        }
+
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        console.log("PP : ", this.state.userlink);
+        this.setState({ loader: true });
+
+        // const response = {
+        //     "ok": true,
+        //     "result": {
+        //         "code": "zekgD5",
+        //         "short_link": "shrtco.de\/zekgD5",
+        //         "full_short_link": "https:\/\/shrtco.de\/zekgD5",
+        //         "short_link2": "9qr.de\/zekgD5",
+        //         "full_short_link2": "https:\/\/9qr.de\/zekgD5",
+        //         "short_link3": "shiny.link\/zekgD5",
+        //         "full_short_link3": "https:\/\/shiny.link\/zekgD5",
+        //         "share_link": "shrtco.de\/share\/zekgD5",
+        //         "full_share_link": "https:\/\/shrtco.de\/share\/zekgD5",
+        //         "original_link": "https:\/\/facebook.com"
+        //     }
+        // }
+        // this.setState({ 
+        //     loader: false, 
+        //     showLink: true,
+        //     arrLinks: [...this.state.arrLinks, response.result]
+        // });
+        axios
+            .get("https://api.shrtco.de/v2/shorten?url="+this.state.userlink)
+            .then((response) => {
+                this.setState({ 
+                    loader: false, 
+                    showLink: true,
+                    arrLinks: [response.data.result, ...this.state.arrLinks]
+                });
+                // console.log(response);
+                // console.log("m"+JSON.stringify(this.state.arrLinks));
+                // console.log(response.data.result.full_short_link);
+                
+            })
+
+            .catch((error) => {
+                
+                console.log(error);
+            });
+
+           
+    }
+
+    invalidLink() {
+
     }
 
     render() {
@@ -192,12 +254,24 @@ class Home extends Component {
             <HomeBody>
                 <Shorten>
                     <Searchbar>
-                        <input type="text" placeholder="Shorten a link here..." />
+                        <input type="text" id="userlink"
+                            name="userlink"
+                            placeholder="Shorten a link here..."
+                            value={this.state.userlink}
+                            invalid={this.invalidLink}
+                            onChange={(e) => {
+                                this.setState({ userlink: e.target.value });
+                            }}
+                        />
                     </Searchbar>
-                    <ShortenIt>
+                    <ShortenIt onClick={this.handleClick}>
                         Shorten it!
                     </ShortenIt>
                 </Shorten>
+                
+                {/* <ShortenedLinks links={this.state.arrLinks} /> */}
+                {this.state.loader ? <Loader /> : <></>}
+                <ShortenedLinks links={this.state.arrLinks}/>
 
                 <Advance>
                     <Ad_head>
@@ -245,3 +319,4 @@ class Home extends Component {
 }
 
 export default Home;
+export { ShortenIt };
