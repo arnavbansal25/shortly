@@ -1,28 +1,30 @@
-import React from 'react';
+import React, { Component, useState } from 'react';
 import { Hrline } from './NavbarComponent';
 import { Start } from './HeaderComponent';
 import { ShortenIt } from './HomeComponent';
 import styled from 'styled-components';
 
-const Shorten = styled.div`
-    margin: 0 auto;
-    width: 100%;
-`
-
 const Hrline_i = styled(Hrline)`
     width: 100%;
     margin: 20px 0;
+
+    @media only screen and (min-width: 730px) {
+        display: none;
+    }
 `
 const Card = styled.div`
     background-color: #fff;
-    padding: 20px 0;
+    padding: 15px 0;
     margin-top: 30px;
     border-radius: 5px;
     border: none;
-    ${'' /* @media only screen and (min-width: 730px) {
-        max-width: 300px;
-        margin-top: ${props => props.a ? '0' : props.b ? '40px' : '80px'};
-    } */}
+
+    @media only screen and (min-width: 730px) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+    }
 `
 
 const CardTitle = styled.h4`
@@ -30,69 +32,95 @@ const CardTitle = styled.h4`
     font-weight: 700;
     margin: 0 20px;
     word-wrap: break-word;
-    ${'' /* overflow: hidden; */}
+
+    @media only screen and (min-width: 730px) {
+        width: 50%;
+        margin: 0;
+    }
 `
 
 const CardBody = styled.div`
     color: #bfbfbf;
     font-size: 16px;
     margin: 0 20px;
-    ${'' /* @media only screen and (min-width: 730px) {
-        text-align: left;
-    } */}
+
+    @media only screen and (min-width: 730px) {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin: 0;
+        width: 50%;
+    }
 `
 
 const Short = styled.h4`
     color: #2acfcf;
     margin: 0;
     margin-bottom: 20px;
-    overflow: hidden;
+    word-wrap: break-word;
+
+    @media only screen and (min-width: 730px) {
+        margin: 0;
+        margin-right: 20px;
+    }
 `
 
 const Copy = styled(Start)`
-    color: #fff;
-    background: #2acfcf;
+    color: $fff;
+    background: ${props => props.click === true ? '#3b3054' : '#2acfcf'};
     cursor: pointer;
 
     font-family: 'Poppins';
     font-weight: 700;
     font-size: 16px;
 
-    border-radius: 5px;
+    border-radius: 5px;}
     border: none;
 
-    ${'' /* width: 100%; */}
     max-width: 100%;
 
     padding: 10px;
     margin: 0;
 
-    ${'' /* @media only screen and (min-width: 730px) {
-        width: 15%;
+    @media only screen and (min-width: 730px) {
+        width: 25%;
         margin: 0;
-    } */}
+    }
 `
 
-function ShortenedLinks({ links }) {
-    console.log("LINKS ",links);
-    return (
-        <Shorten>
-            {
-                links && links.map((l) => {
-                    return (
-                        <Card>
-                            <CardTitle>{l.original_link}</CardTitle>
-                            <Hrline_i />
-                            <CardBody>
-                                <Short>{l.full_short_link}</Short>
-                                <Copy>Copy</Copy>
-                            </CardBody>
-                        </Card>
-                    );
-                })
-            }
-        </Shorten>
-    );
+class ShortenedLinks extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isClicked: false
+        }
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    // this function changes 
+    handleChange(e) {
+        e.preventDefault()
+        navigator.clipboard.writeText(this.props.link.full_short_link)
+            .then(() => this.setState({ isClicked: true }))
+            .catch(() => console.log("Unable to copy."))
+    }
+
+    render() {
+        return (
+            <Card>
+                <CardTitle>{this.props.link.original_link}</CardTitle>
+                <Hrline_i />
+                <CardBody>
+                    <Short>{this.props.link.full_short_link}</Short>
+                    <Copy id={this.props.link.code} click={this.state.isClicked} onClick={this.handleChange}>
+                        {this.state.isClicked ? "Copied!" : "Copy"}
+                    </Copy>
+                </CardBody>
+            </Card>
+        );
+    }
 }
 
 export default ShortenedLinks;
