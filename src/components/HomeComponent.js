@@ -57,11 +57,12 @@ const Searchbar = styled.div`
         font-size: 16px;
 
         ::placeholder {
-            color: #bfbfbf;
+            ${'' /* {console.log(props)} */}
+            color: ${props => props.error===false ? '#bfbfbf' : '#f46262'};
         }
         
         border-radius: 5px;
-        border: none;
+        border: ${props => props.error===false ? 'none' : 'solid #f46262'};;
         
         padding: 10px 15px;
     }    
@@ -70,6 +71,7 @@ const Searchbar = styled.div`
         width: 70%;
         margin: 0;
         margin-right: 15px;
+        margin-top: ${props => props.error===false ? '0' : "25px"};
     }
 `
 
@@ -185,6 +187,29 @@ const Vr = styled.div`
     }
 `
 
+const Shortenurl = styled.div`
+    margin: 0 auto;
+    width: 100%;
+
+    @media only screen and (min-width: 730px) {
+        max-width: 1250px;
+    }
+`
+
+const Error = styled.span`
+    color: #f46262;
+    font-size: 14px;
+    font-weight: 500;
+    font-style: italic;
+
+    display: inline;
+
+    @media only screen and (min-width: 730px) {
+        ${'' /* display: none; */}
+        ${'' /* float: left; */}
+    }
+`
+
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -193,14 +218,15 @@ class Home extends Component {
             userlink: '',
             arrLinks: [],
             loader: false,
-            showlink: false            
+            showlink: false,
+            isError: false,
+            errorMesssage: ''
         }
 
         this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick() {
-        console.log("PP : ", this.state.userlink);
         this.setState({ loader: true });
 
         // const response = {
@@ -218,8 +244,8 @@ class Home extends Component {
         //         "original_link": "https:\/\/facebook.com"
         //     }
         // }
-        // this.setState({ 
-        //     loader: false, 
+        // this.setState({
+        //     loader: false,
         //     showLink: true,
         //     arrLinks: [...this.state.arrLinks, response.result]
         // });
@@ -234,18 +260,18 @@ class Home extends Component {
                 // console.log(response);
                 // console.log("m"+JSON.stringify(this.state.arrLinks));
                 // console.log(response.data.result.full_short_link);
-                
+
             })
 
             .catch((error) => {
-                
+                this.setState({
+                    loader: false,
+                    isError: true,
+                    errorMessage: "Please add a valid link"
+                })
                 console.log(error);
             });
 
-           
-    }
-
-    invalidLink() {
 
     }
 
@@ -253,25 +279,33 @@ class Home extends Component {
         return (
             <HomeBody>
                 <Shorten>
-                    <Searchbar>
+                    <Searchbar error={this.state.isError}>
                         <input type="text" id="userlink"
                             name="userlink"
                             placeholder="Shorten a link here..."
                             value={this.state.userlink}
-                            invalid={this.invalidLink}
                             onChange={(e) => {
                                 this.setState({ userlink: e.target.value });
                             }}
                         />
+                        <Error>{this.state.errorMessage}</Error>
                     </Searchbar>
                     <ShortenIt onClick={this.handleClick}>
                         Shorten it!
                     </ShortenIt>
                 </Shorten>
-                
-                {/* <ShortenedLinks links={this.state.arrLinks} /> */}
+
                 {this.state.loader ? <Loader /> : <></>}
-                <ShortenedLinks links={this.state.arrLinks}/>
+                <Shortenurl>
+                    {
+                        this.state.arrLinks && this.state.arrLinks.map((l) => {
+                            return (
+                                <ShortenedLinks link={l} />
+                            );
+                        })
+                    }
+                </Shortenurl>
+
 
                 <Advance>
                     <Ad_head>
