@@ -227,7 +227,11 @@ class Home extends Component {
     }
 
     handleClick() {
-        this.setState({ loader: true });
+        this.setState({ 
+            loader: true,
+            isError: false,
+            errorMessage: ''
+        });
 
         // const response = {
         //     "ok": true,
@@ -257,10 +261,6 @@ class Home extends Component {
                     showLink: true,
                     arrLinks: [response.data.result, ...this.state.arrLinks]
                 });
-                // console.log(response);
-                // console.log("m"+JSON.stringify(this.state.arrLinks));
-                // console.log(response.data.result.full_short_link);
-
             })
 
             .catch((error) => {
