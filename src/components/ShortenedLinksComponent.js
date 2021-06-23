@@ -83,7 +83,7 @@ const Copy = styled(Start)`
     margin: 0;
 
     &:hover {
-        background: #9be3e2;
+        background: ${props => props.click === true ? '#3b3054' : '#9be3e2'};
     }
  
     @media only screen and (min-width: 730px) {
