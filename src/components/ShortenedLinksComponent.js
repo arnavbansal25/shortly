@@ -82,6 +82,10 @@ const Copy = styled(Start)`
     padding: 10px;
     margin: 0;
 
+    &:hover {
+        background: #9be3e2;
+    }
+ 
     @media only screen and (min-width: 730px) {
         width: 25%;
         margin: 0;

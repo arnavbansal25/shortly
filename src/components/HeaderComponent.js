@@ -107,6 +107,10 @@ const Start = styled.button`
     margin: 0 auto;
     margin-top: 30px;
 
+    &:hover {
+        background: #9be3e2;
+    }
+
     @media only screen and (min-width: 730px) {
         margin-left: 0;        
     }

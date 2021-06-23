@@ -106,6 +106,10 @@ const NavItem = styled.div`
 
         a {
             color: #bfbfbf;
+
+            &:hover {
+            color: #35323e;
+            }
         }
     }  
 `
@@ -133,74 +137,17 @@ const Button = styled.button`
     background: ${props => props.login ? 'transparent' : '#2acfcf'};
     padding: ${props => props.login ? '' : '10px 25vw'};
     cursor: pointer;
+
+    &:hover {
+        color: ${props => props.login ? '#35323e' : '#fff'};
+        background: ${props => props.login ? 'transparent': '#9be3e2'};
+    }
     
     @media only screen and (min-width: 720px) {
         color: ${props => props.login ? '#bfbfbf' : '#fff'};
-        background: ${props => props.login ? 'transparent' : '#2acfcf'};
         padding: ${props => props.login ? '0' : '8px 25px'};
     }  
 `
-
-
-// const NavLink = styled(Link)`
-//     color: #808080;
-//     ${'' /* display: flex; */}
-//     text-decoration: none;
-//     height: 100%;
-//     cursor: pointer;
-//     &.active {
-//         color: #000000;
-//     }
-// `
-
-// const Bars = styled(FaBars)`
-//     display: none;
-//     color: #808080;
-//     @media screen and (max-width: 768px) {
-//         display: block;
-//         position: absolute;
-//         top: 0;
-//         right: 0;
-//         transform: translate(-100%, 75%);
-//         font-size: 1.8rem;
-//         cursor: pointer;
-//     }
-// `
-
-// const NavMenu = styled.div`
-//     display: flex;
-//     margin-right: -24px;
-
-//     @media screen and (max-width: 768px) {
-//         display: none;
-//     }
-// `
-
-// const NavBtn = styled.nav`
-//     display: flex;
-//     justify-content: right;
-//     @media screen and (max-width: 768px) {
-//         display: none;
-//     }
-// `
-
-// const NavBtnLink = styled(Link)`
-//     border-radius: 4px;
-//     background: #808080;
-//     justify-content: right;
-//     color: #000000;
-//     outline: none;
-//     border: none;
-//     cursor: pointer;
-//     transition: all 0.2s ease-in-out;
-//     text-decoration: none;
-
-//     &:hover {
-//         transition: all 0.2s ease-in-out;
-//         background: #fff;
-//         color: #808080;
-//     }
-// `
 
 class Navbar extends Component {
     constructor(props) {

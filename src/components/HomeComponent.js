@@ -92,6 +92,10 @@ const ShortenIt = styled.button`
     padding: 10px;
     margin: 0 auto;
 
+    &:hover {
+        background: #9be3e2;
+    }
+
     @media only screen and (min-width: 730px) {
         width: 15%;
         margin: 0;

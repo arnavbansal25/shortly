@@ -47,9 +47,14 @@ const FooterLinks = styled.div`
 
 const Logo_i = styled.h1`
     margin: 0;
+    cursor: pointer;
 
     img {
         filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+    }
+
+    img:hover {
+        filter: invert(81%) sepia(70%) saturate(887%) hue-rotate(132deg) brightness(88%) contrast(82%);
     }
 
     @media only screen and (min-width: 730px) {
@@ -68,6 +73,10 @@ const Footnav = styled.div`
         text-decoration: none;
         margin-bottom: 10px;
         font-size: 16px;
+
+        &:hover {
+        color: #2acfcf !important;
+        }
     }
 
     @media only screen and (min-width: 730px) {
@@ -78,12 +87,21 @@ const Footnav = styled.div`
 const Subnav = styled.a`
     color: #bfbfbf !important;
     margin-bottom: 5px !important;
+
+    &:hover {
+        color: #2acfcf !important;
+    }
 `
 
 const Social = styled.div`
     width: 50%;
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
+    
+    img:hover {
+        filter: invert(10%) sepia(70%) saturate(887%) hue-rotate(132deg) brightness(88%) contrast(82%);
+    }
 
     @media only screen and (min-width: 730px) {
         width: 10%;
