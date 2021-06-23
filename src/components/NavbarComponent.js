@@ -33,6 +33,7 @@ const Bar = styled.span`
 const Collapse = styled.div`
     width: 100%;
     background: #3b3054;
+    margin: 0 auto;
     margin-top: 55px;
     border-radius: 10px;
     display: ${props => props.isOpen ? 'flex' : 'none'};
